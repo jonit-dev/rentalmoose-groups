@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rental Groups</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+    <!--BOOTSTRAP (Header)-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+
+    <script src="angular/app.js"></script>
+    <script src="angular/controllers/mainCtrl.js"></script>
+
+
+</head>
+<body>
+
+
+<header>
+    <div class="collapse bg-green" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <!--<h4 class="text-white">About</h4>-->
+                    <!--<p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>-->
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <!--<h4 class="text-white">Contact</h4>-->
+                    <!--<ul class="list-unstyled">-->
+                    <!--<li><a href="#" class="text-white">Follow on Twitter</a></li>-->
+                    <!--<li><a href="#" class="text-white">Like on Facebook</a></li>-->
+                    <!--<li><a href="#" class="text-white">Email me</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-green shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <strong>
+                    <i class="fas fa-home"></i>
+                    Rental Groups</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main role="main" ng-controller="mainCtrl">
+
+    <div class="container groups-container">
+
+        <div class="row">
+            <div class="col-md-12 social-banner-container">
+
+                <img src="media/WhatsApp.svg" alt="Whatsapp image" class="whatsapp-logo">
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12 ">
+
+
+                <div class="join-text">
+                    <h2>Join Our Groups</h2>
+
+                    <p>
+                        Due to our group members moderation, we ask you for some information before joining us.
+                    </p>
+                </div>
+
+
+                <form action="#" method="POST" id="formJoinGroup">
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                               placeholder="Your e-mail here" ng-model="user.email">
+                        <small class="form-text text-muted">Your e-mail is safe with us.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userCity">City</label>
+                           <select class="form-control" ng-options="city as city.name for city in cities track by city.id" ng-model="user.city" id="userCity" ng-change="loadCities(user.city)"></select>
+                                   </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        {{selectedGroup}}
+                        <label for="userGroups">Groups</label>
+                        <select class="form-control" ng-options="group as group.name for group in selectedGroups track by group.id"
+                                ng-model="user.group" id="userGroups"></select>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-lg btn-green btn-block mt-4" ng-click="joinGroup()">Join Group</button>
+
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+<footer class="text-muted">
+
+</footer>
+
+
+<!--BOOTSTRAP (Footer)-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

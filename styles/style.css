@@ -1,0 +1,42 @@
+.bg-green {
+    background-color: #105B51 !important;
+}
+
+.btn-green {
+    border: none !important;
+    background-color: #25B69F !important;
+}
+
+.groups-container {
+    max-width: 700px !important;
+}
+
+
+.social-banner-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.whatsapp-logo {
+    max-width: 167px;
+    flex: 1 1 100%;
+    margin-top: 2rem;
+
+}
+
+.join-text {
+    text-align: center;
+}
+
+.join-text h2 {
+    color: #435861;
+}
+
+.join-text p {
+    text-align: center;
+    font-size: 0.95rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
