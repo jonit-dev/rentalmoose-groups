@@ -1,4 +1,7 @@
-app.controller("mainCtrl", function ($scope) {
+app.controller("mainCtrl", function ($scope, $timeout) {
+
+
+    $scope.alert = null;
 
     $scope.groups = [
 
@@ -78,21 +81,43 @@ app.controller("mainCtrl", function ($scope) {
 
     $scope.joinGroup = function () {
 
-        let userCity = $scope.user.city.name;
+        /* Validate user information =========================================== */
 
+        if ($scope.user.email == "") {
+            $scope.alert = {
+                type: "danger",
+                message: "Please, fill your e-mail address to proceed"
+            };
+            return false;
+        }
+
+
+        /* Save user information =========================================== */
+
+
+        let userCity = $scope.user.city.name;
 
         //save user info in database
 
         fbDatabase.ref(`leads/${userCity.toLowerCase()}`).push($scope.user);
+
+        $scope.alert = {
+            type: "success",
+            message: "You're being redirected to the selected group"
+        };
+
+        $timeout(() => {
+
+            console.log("redirect to group");
+
+
+        }, 2000);
 
 
         //open fb group on a new tab
 
 
         // redirect user to fb group
-
-
-        console.log($scope.user);
 
 
     }
