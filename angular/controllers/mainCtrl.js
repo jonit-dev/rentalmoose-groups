@@ -8,10 +8,10 @@ app.controller("mainCtrl", function ($scope, $timeout) {
         {
             city: "Vancouver",
             groups: [
-                {id: 0, name: "Vancouver Rental - Brazil", url: "#"},
-                {id: 1, name: "Vancouver Rental - India", url: "#"},
-                {id: 2, name: "Vancouver Rental - China", url: "#"},
-                {id: 3, name: "Vancouver Rental - Philippines", url: "#"}
+                {id: 0, name: "Vancouver Rental - Brazil", url: "https://chat.whatsapp.com/IFxqCtwmLwqGJwb3YyPXVp"},
+                {id: 1, name: "Vancouver Rental - India", url: "https://chat.whatsapp.com/HKdBBsPri8fJLifqjmVral"},
+                {id: 2, name: "Vancouver Rental - China", url: "https://chat.whatsapp.com/BzPQWHc8miTGdF7oxqlOLy"},
+                {id: 3, name: "Vancouver Rental - Philippines", url: "https://chat.whatsapp.com/BPaSeqj5cR0FSvDUVC5ge5"}
             ]
         },
         {
