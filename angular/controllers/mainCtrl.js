@@ -1,4 +1,4 @@
-app.controller("mainCtrl", function ($scope, $timeout) {
+app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
 
 
     $scope.alert = null;
@@ -17,10 +17,10 @@ app.controller("mainCtrl", function ($scope, $timeout) {
         {
             city: "Toronto",
             groups: [
-                {id: 0, name: "Toronto Rental - Brazil", url: "#"},
-                {id: 1, name: "Toronto Rental - India", url: "#"},
-                {id: 2, name: "Toronto Rental - China", url: "#"},
-                {id: 3, name: "Toronto Rental - Philippines", url: "#"}
+                {id: 0, name: "Toronto Rental - Brazil", url: "https://chat.whatsapp.com/DfLBBgUAkh0EBLGKbORdpQ"},
+                {id: 1, name: "Toronto Rental - India", url: "https://chat.whatsapp.com/JNoUPDcI03pKk6E3gqwqLs"},
+                {id: 2, name: "Toronto Rental - China", url: "https://chat.whatsapp.com/KTSPjPKtZub5ZbhDVPUiTI"},
+                {id: 3, name: "Toronto Rental - Philippines", url: "https://chat.whatsapp.com/KKWfxQEWmirBo4tQp0XM7A"}
             ]
         }
 
@@ -94,7 +94,6 @@ app.controller("mainCtrl", function ($scope, $timeout) {
 
         /* Save user information =========================================== */
 
-
         let userCity = $scope.user.city.name;
 
         //save user info in database
@@ -108,16 +107,13 @@ app.controller("mainCtrl", function ($scope, $timeout) {
 
         $timeout(() => {
 
-            console.log("redirect to group");
+            console.log($scope.user);
 
 
-        }, 2000);
+            $window.location.href = $scope.user.group.url;
 
 
-        //open fb group on a new tab
-
-
-        // redirect user to fb group
+        }, 1000);
 
 
     }
