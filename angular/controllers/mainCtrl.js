@@ -1,5 +1,6 @@
 app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
 
+    mixpanel.track("Visited the page");
 
     $scope.alert = null;
 
