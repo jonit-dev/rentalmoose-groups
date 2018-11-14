@@ -74,6 +74,7 @@ app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
 
     $scope.loadCities = function (userCity) {
 
+
         let filtered = $scope.groups.filter((group) => {
 
             if (group.city == userCity.name) {
@@ -115,6 +116,8 @@ app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
 
             console.log($scope.user);
 
+
+            mixpanel.track("Joined group");
 
             $window.location.href = $scope.user.group.url;
 
