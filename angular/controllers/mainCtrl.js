@@ -108,6 +108,21 @@ app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
 
         fbDatabase.ref(`leads/${userCity.toLowerCase()}`).push($scope.user);
 
+        mixpanel.identify($scope.user.email); //identify user by email
+
+        mixpanel.track("Joined group"); //track event
+
+        //track some important properties
+        mixpanel.people.set({
+            "$email": $scope.user.email,    // only special properties need the $
+            "$city": $scope.user.city.name,
+            "$group": $scope.user.group.name,
+            "$url": $scope.user.group.url,
+            "$last_login": new Date(),         // properties can be dates...
+        });
+
+
+
         $scope.alert = {
             type: "success",
             message: "You're being redirected to the selected group"
@@ -117,7 +132,6 @@ app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
 
             console.log($scope.user);
 
-            mixpanel.identify($scope.user.email); //identify user by email
 
             $scope.user = {
                 group: $scope.selectedGroups[0], //vancouver
@@ -125,16 +139,9 @@ app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
                 email: "",
             };
 
-            //track some important properties
-            mixpanel.people.set({
-                "$email": $scope.user.email,    // only special properties need the $
-                "$city": $scope.user.city.name,
-                "$group": $scope.user.group.name,
-                "$url": $scope.user.group.url,
-                "$last_login": new Date(),         // properties can be dates...
-             });
 
-            mixpanel.track("Joined group"); //track event
+
+
 
             $window.location.href = $scope.user.group.url;
 
