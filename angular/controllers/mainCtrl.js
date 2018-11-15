@@ -117,8 +117,24 @@ app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
 
             console.log($scope.user);
 
+            mixpanel.identify($scope.user.email); //identify user by email
 
-            mixpanel.track("Joined group");
+            $scope.user = {
+                group: $scope.selectedGroups[0], //vancouver
+                city: $scope.cities[0], //vancouver
+                email: "",
+            };
+
+            //track some important properties
+            mixpanel.people.set({
+                "$email": $scope.user.email,    // only special properties need the $
+                "$city": $scope.user.city.name,
+                "$group": $scope.user.group.name,
+                "$url": $scope.user.group.url,
+                "$last_login": new Date(),         // properties can be dates...
+             });
+
+            mixpanel.track("Joined group"); //track event
 
             $window.location.href = $scope.user.group.url;
 
