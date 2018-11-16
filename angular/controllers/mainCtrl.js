@@ -1,6 +1,6 @@
 app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
 
-    mixpanel.track("page_visit");
+    mixpanel.track("Visited the page");
 
     $scope.alert = null;
 
@@ -110,7 +110,7 @@ app.controller("mainCtrl", function ($scope, $timeout, $window, $location) {
 
         mixpanel.identify($scope.user.email); //identify user by email
 
-        mixpanel.track("joined_group"); //track event
+        mixpanel.track("Joined group"); //track event
 
         //track some important properties
         mixpanel.people.set({
